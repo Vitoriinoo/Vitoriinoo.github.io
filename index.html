@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vitor Vitorino | IA e Dados</title>
+  <meta name="description" content="Portfólio de Vitor Barbosa Vitorino, estudante de Inteligência Artificial na FIAP, com foco em Machine Learning, IA generativa e LLMs.">
+  <meta property="og:title" content="Vitor Vitorino | IA e Dados">
+  <meta property="og:description" content="Projetos de Machine Learning, IoT e IA aplicada. Destaque: AgroRisk, monitoramento de risco operacional para a Sompo Seguros.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%235fd38d'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='17' text-anchor='middle' fill='%2306130b'%3EVV%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="container">
+      <a class="brand" href="#">vitor<span>.</span>vitorino</a>
+      <ul>
+        <li><a href="#projetos">Projetos</a></li>
+        <li class="hide-sm"><a href="#sobre">Sobre</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="container">
+        <p class="eyebrow">Inteligência Artificial · FIAP</p>
+        <h1>Olá, sou o Vitor.<br>Construo sistemas que transformam <span class="hl">dados em decisões</span>.</h1>
+        <p class="lead">Sou estudante de Inteligência Artificial e trabalho com Machine Learning, IA generativa e LLMs. Gosto de projetos completos, que vão do sensor ao modelo e do modelo ao alerta no celular de quem precisa agir.</p>
+        <div class="actions">
+          <a class="btn primary" href="projetos/agrorisk.html">Ver projeto em destaque →</a>
+          <a class="btn" href="https://github.com/Vitoriinoo" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </header>
+
+    <section id="projetos">
+      <div class="container">
+        <p class="eyebrow">Projeto em destaque</p>
+        <h2>Projetos</h2>
+
+        <article class="card featured">
+          <div>
+            <span class="badge">★ Desafio Sompo Seguros · FIAP</span>
+            <h3 style="font-size:1.6rem">AgroRisk: risco operacional em tempo real para colheitadeiras</h3>
+            <p class="muted">Uma plataforma IoT de ponta a ponta. Um ESP32 na máquina envia telemetria para a nuvem, um motor de risco gera um score explicável de 0 a 100, e o alerta chega ao operador, ao dono da fazenda e à seguradora.</p>
+            <ul class="points">
+              <li><strong>Hardware até o celular:</strong> ESP32 com 4 sensores, API serverless, PostgreSQL e alertas por Web Push e Telegram.</li>
+              <li><strong>IA com governança:</strong> detecção de anomalias por máquina e modelo de escalada de risco, ambos versionados e consultivos.</li>
+              <li><strong>Minha parte:</strong> sistema de alertas no celular e relatórios históricos por fazenda, região e período.</li>
+            </ul>
+            <ul class="tags">
+              <li>ESP32</li><li>Node.js</li><li>PostgreSQL</li><li>Python · pandas</li><li>Machine Learning</li><li>Vercel</li>
+            </ul>
+            <div class="actions">
+              <a class="btn primary" href="projetos/agrorisk.html">Ler o case</a>
+              <a class="btn" href="https://agrorisk-sompo.vercel.app" target="_blank" rel="noopener">Demo ao vivo ↗</a>
+              <a class="btn" href="https://github.com/Vitoriinoo/AgroRisk" target="_blank" rel="noopener">Código ↗</a>
+            </div>
+          </div>
+
+          <div class="risk-panel" aria-label="Exemplo ilustrativo de uma leitura de risco do AgroRisk">
+            <div style="display:flex;justify-content:space-between;align-items:flex-end">
+              <div>
+                <div class="muted">colheitadeira-01</div>
+                <div class="score">68<span style="font-size:1rem" class="muted">/100</span></div>
+              </div>
+              <span class="level">ALTO</span>
+            </div>
+            <div class="bar"><span style="width:68%"></span></div>
+            <div class="row"><span>Obstáculo crítico (≤ 30 cm)</span><span class="pts">+30</span></div>
+            <div class="row"><span>Inclinação crítica (≥ 15°)</span><span class="pts">+25</span></div>
+            <div class="row"><span>Zona perigosa próxima</span><span class="pts">+8</span></div>
+            <div class="row"><span>Umidade em atenção</span><span class="pts">+5</span></div>
+            <div class="row muted"><span>→ Alerta enviado ao operador</span><span>📱</span></div>
+          </div>
+        </article>
+
+        <div class="grid cols-2" style="margin-top:16px">
+          <article class="card">
+            <h3>Pipeline de risco em Python</h3>
+            <p class="muted">Este é o MVP acadêmico do AgroRisk. Ele valida a telemetria, calcula o score com pandas, separa registros inconsistentes e gera relatórios em CSV, JSON e PNG, tudo coberto por testes automatizados.</p>
+            <ul class="tags"><li>Python</li><li>pandas</li><li>unittest</li></ul>
+          </article>
+          <article class="card">
+            <h3>Próximos projetos</h3>
+            <p class="muted">Outros estudos em Machine Learning, IA generativa e LLMs serão publicados aqui. Enquanto isso, eles estão no meu GitHub.</p>
+            <a href="https://github.com/Vitoriinoo?tab=repositories" target="_blank" rel="noopener">Ver repositórios ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre" style="background:var(--bg-soft)">
+      <div class="container prose">
+        <p class="eyebrow">Sobre</p>
+        <h2>Da teoria ao produto funcionando</h2>
+        <p>Estudo Inteligência Artificial na <strong>FIAP</strong>. Meu interesse está em levar modelos para fora do notebook: integrar com sensores, APIs e bancos de dados, e entregar o resultado de um jeito que uma pessoa consiga entender e usar.</p>
+        <p>No AgroRisk, trabalhei em equipe de quatro pessoas num desafio proposto pela <strong>Sompo Seguros</strong>. Fiquei responsável por entregar o alerta certo, na hora certa e pelo canal disponível, e por consolidar o histórico em relatórios que mostram onde o risco se concentra.</p>
+      </div>
+    </section>
+
+    <section id="habilidades">
+      <div class="container">
+        <p class="eyebrow">Habilidades</p>
+        <h2>O que eu uso</h2>
+        <div class="grid cols-3">
+          <div class="card skill-card">
+            <h3>🧠 IA e Dados</h3>
+            <p>Modelagem, avaliação e explicabilidade de modelos.</p>
+            <ul class="tags"><li>Python</li><li>pandas</li><li>Machine Learning</li><li>Detecção de anomalias</li><li>IA generativa</li><li>LLMs</li></ul>
+          </div>
+          <div class="card skill-card">
+            <h3>⚙️ Backend</h3>
+            <p>APIs, persistência e integrações de notificação.</p>
+            <ul class="tags"><li>Node.js</li><li>PostgreSQL</li><li>REST</li><li>Web Push</li><li>Telegram Bot API</li><li>Serverless</li></ul>
+          </div>
+          <div class="card skill-card">
+            <h3>📡 IoT e Web</h3>
+            <p>Do microcontrolador ao painel no navegador.</p>
+            <ul class="tags"><li>ESP32</li><li>Arduino</li><li>HTML/CSS/JS</li><li>PWA</li><li>Git</li><li>Vercel</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" style="background:var(--bg-soft)">
+      <div class="container">
+        <p class="eyebrow">Contato</p>
+        <h2>Vamos conversar?</h2>
+        <p class="lead">Estou aberto a oportunidades e projetos em dados e IA. O jeito mais rápido de me encontrar é pelo GitHub.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://github.com/Vitoriinoo" target="_blank" rel="noopener">github.com/Vitoriinoo</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span>© 2026 Vitor Barbosa Vitorino</span>
+      <span>Feito com HTML e CSS · hospedado no GitHub Pages</span>
+    </div>
+  </footer>
+</body>
+</html>
