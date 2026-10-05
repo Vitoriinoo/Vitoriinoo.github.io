@@ -7,6 +7,7 @@
   <meta name="description" content="Case do AgroRisk: plataforma IoT com score de risco explicável, IA governada e alertas no celular, desenvolvida para o desafio da Sompo Seguros na FIAP.">
   <meta property="og:title" content="AgroRisk | Vitor Vitorino">
   <meta property="og:description" content="Do sensor na colheitadeira ao alerta no celular: score de risco explicável, IA governada e relatórios para seguradora.">
+  <meta property="og:image" content="https://vitoriinoo.github.io/assets/img/og-agrorisk.jpg">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%235fd38d'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='17' text-anchor='middle' fill='%2306130b'%3EVV%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +21,7 @@
       <ul>
         <li><a href="#arquitetura">Arquitetura</a></li>
         <li class="hide-sm"><a href="#ia">IA</a></li>
+        <li class="hide-sm"><a href="#telas">Telas</a></li>
         <li><a href="#contribuicao">Minha parte</a></li>
       </ul>
     </div>
@@ -29,7 +31,7 @@
     <header class="case-hero">
       <div class="container">
         <a class="back" href="../index.html#projetos">← Todos os projetos</a>
-        <p class="eyebrow" style="margin-top:24px">Case · Desafio Sompo Seguros · FIAP</p>
+        <p class="eyebrow" style="margin-top:24px">Case · Challenge Sompo Seguros · FIAP</p>
         <h1>AgroRisk</h1>
         <p class="lead">Uma plataforma que monitora colheitadeiras em tempo real e transforma telemetria em <strong>risco explicável</strong> para três públicos: o operador na cabine, o dono da fazenda e a seguradora.</p>
         <div class="actions">
@@ -41,19 +43,25 @@
         <dl class="case-meta">
           <div><dt>Contexto</dt><dd>Projeto acadêmico · FIAP</dd></div>
           <div><dt>Cliente</dt><dd>Sompo Seguros</dd></div>
-          <div><dt>Equipe</dt><dd>4 pessoas</dd></div>
+          <div><dt>Equipe</dt><dd>sInApse · 4 pessoas</dd></div>
           <div><dt>Meu papel</dt><dd>Alertas e relatórios</dd></div>
         </dl>
+
+        <figure class="shot" style="margin-top:40px">
+            <div class="chrome" aria-hidden="true"><i></i><i></i><i></i></div>
+            <a href="../assets/img/agrorisk/frota.webp" target="_blank" rel="noopener"><img src="../assets/img/agrorisk/frota.webp" width="1600" height="900" alt="Central do gestor do AgroRisk: frota organizada em colunas de risco alto, médio, baixo e sem sinal, com o maior score no topo"></a>
+            <figcaption><strong>Prioridades da frota</strong>As máquinas aparecem em colunas por nível de risco, com o maior score no topo e o motivo visível antes de abrir o equipamento.</figcaption>
+          </figure>
       </div>
     </header>
 
     <section style="background:var(--bg-soft)">
       <div class="container">
         <div class="stats">
-          <div class="stat"><b>4</b><span>sensores no ESP32</span></div>
-          <div class="stat"><b>0–100</b><span>score de risco com fatores explicados</span></div>
-          <div class="stat"><b>18</b><span>tabelas no PostgreSQL</span></div>
-          <div class="stat"><b>14</b><span>suítes de teste passando (JS + Python)</span></div>
+          <div class="stat"><b>9.050</b><span>leituras reais de telemetria no banco</span></div>
+          <div class="stat"><b>400 ms</b><span>intervalo de leitura dos 4 sensores</span></div>
+          <div class="stat"><b>24</b><span>rotas serverless · 18 tabelas</span></div>
+          <div class="stat"><b>2</b><span>canais de alerta independentes</span></div>
         </div>
       </div>
     </section>
@@ -62,7 +70,8 @@
       <div class="container prose">
         <p class="eyebrow">O problema</p>
         <h2>Risco no campo é invisível até virar sinistro</h2>
-        <p>Colheitadeiras operam em terreno irregular, perto de rios, barrancos e obstáculos. Para a seguradora, o risco só aparece quando o sinistro já aconteceu. Para o operador, o alerta precisa chegar <strong>enquanto ainda dá tempo de agir</strong>.</p>
+        <p>O projeto partiu de um acidente real: em 2026, um operador perdeu a vida quando a máquina caiu de uma ribanceira. <strong>Os sinais existiam segundos antes</strong> (inclinação, obstáculo, velocidade), mas nada transformava esses dados em ação.</p>
+        <p>Colheitadeiras operam em terreno irregular, perto de rios, barrancos e obstáculos. Para a seguradora, o risco só aparece quando o sinistro já aconteceu. Quem está na cabine não fica olhando para tela nenhuma, então o alerta precisa chegar <strong>enquanto ainda dá tempo de agir</strong>. E custo não é barreira: os sensores ficam em torno de <strong>R$ 140 por máquina</strong>.</p>
         <p>O desafio foi construir uma solução que medisse esse risco continuamente, explicasse o motivo de cada alerta e mostrasse cada informação a quem precisa dela: ação imediata para o operador, visão de frota para o produtor e visão de carteira para a Sompo.</p>
       </div>
     </section>
@@ -71,7 +80,7 @@
       <div class="container">
         <p class="eyebrow">Arquitetura</p>
         <h2>Do sensor ao celular</h2>
-        <p class="muted" style="max-width:720px">O ESP32 envia leituras por Wi-Fi diretamente para a API. Se o Wi-Fi cair, as leituras seguem pelo cabo USB até um gateway local, que faz o mesmo envio. O backend calcula o risco, grava no banco e pode devolver um comando para o buzzer da máquina.</p>
+        <p class="muted" style="max-width:720px">O ESP32 lê os quatro sensores a cada 400 ms e envia as leituras por Wi-Fi diretamente para a API. Se o Wi-Fi cair, as leituras seguem pelo cabo USB até um gateway local, que faz o mesmo envio. O backend calcula o risco, grava no banco e pode devolver um comando para o buzzer da máquina.</p>
 
         <div class="card diagram" style="margin-top:24px">
           <svg viewBox="0 0 900 330" role="img" aria-label="Diagrama de arquitetura do AgroRisk">
@@ -147,15 +156,50 @@
         <div class="grid cols-2" style="margin-top:24px">
           <div class="card">
             <h3>Detecção de anomalias por máquina</h3>
-            <p class="muted">Cada equipamento tem seu próprio perfil, com mediana e desvio absoluto mediano (MAD) de 7 variáveis. Uma leitura é marcada como anômala quando foge do padrão daquela máquina, e o sistema aponta quais variáveis causaram o desvio. Os dados de demonstração nunca entram no treinamento.</p>
+            <p class="muted"><strong>Ativo.</strong> Foi treinado com 9.050 leituras reais. Cada equipamento tem seu próprio perfil, com mediana e desvio absoluto mediano (MAD) de 7 variáveis. Uma leitura é marcada como anômala quando foge do padrão daquela máquina, e o sistema aponta quais variáveis causaram o desvio. Os dados de demonstração nunca entram no treinamento.</p>
           </div>
           <div class="card">
             <h3>Previsão de escalada de risco</h3>
-            <p class="muted">Uma regressão logística sobre 10 features normalizadas estima a chance de o risco subir nas próximas leituras. O modelo é versionado com hash do dataset e métricas de validação, e só é ativado quando atinge critérios mínimos.</p>
+            <p class="muted"><strong>Bloqueado de propósito.</strong> Uma regressão logística sobre 10 features normalizadas estima a chance de o risco subir nas próximas leituras. O modelo é versionado com hash do dataset e métricas de validação. Ele só será ativado quando houver rótulos humanos verificados pela seguradora e métricas mínimas atingidas.</p>
           </div>
         </div>
         <div class="callout" style="margin-top:16px">
-          <strong>Princípio de projeto:</strong> <span class="muted">a IA informa e não decide. O score auditável continua sendo a referência, e os modelos aparecem como sinal consultivo, com versão e origem dos dados registradas.</span>
+          <strong>Princípio de projeto:</strong> <span class="muted">a IA organiza evidências, mas não decide cobertura. A regra determinística e auditável continua sendo a fonte de verdade, e os modelos aparecem como sinal consultivo, com versão e origem dos dados registradas.</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="telas">
+      <div class="container">
+        <p class="eyebrow">O produto</p>
+        <h2>O sistema, tela a tela</h2>
+        <p class="muted" style="max-width:720px">Todas as telas abaixo estão no ar na demo e usam dados demonstrativos. Clique em uma imagem para ver em tamanho cheio.</p>
+        <div class="gallery">
+          <figure class="shot wide">
+            <div class="chrome" aria-hidden="true"><i></i><i></i><i></i></div>
+            <a href="../assets/img/agrorisk/monitoramento.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/img/agrorisk/monitoramento.webp" width="1600" height="900" alt="Monitoramento ao vivo: distância frontal, temperatura, posição GPS, área segurada no mapa e horizonte artificial do giroscópio"></a>
+            <figcaption><strong>Monitoramento ao vivo</strong>Mostra distância frontal, temperatura e umidade, posição no mapa com a área segurada e o horizonte artificial do giroscópio. A tela atualiza em menos de um segundo após cada leitura.</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="chrome" aria-hidden="true"><i></i><i></i><i></i></div>
+            <a href="../assets/img/agrorisk/analise.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/img/agrorisk/analise.webp" width="1600" height="900" alt="Análise explicável com score 92 de 100 e abas para corretor, subscritor e analista de sinistros"></a>
+            <figcaption><strong>Análise explicável</strong>O score 92/100 é traduzido para três leitores. O cálculo e a interpretação ficam separados: a camada de texto nunca altera o score.</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="chrome" aria-hidden="true"><i></i><i></i><i></i></div>
+            <a href="../assets/img/agrorisk/relatorios.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/img/agrorisk/relatorios.webp" width="1600" height="900" alt="Relatórios históricos com 9.056 leituras, score médio 40, 6% do tempo em risco alto e fatores predominantes"></a>
+            <figcaption><strong>Relatórios históricos · minha entrega</strong>Neste recorte: 9.056 leituras, 6% do tempo em risco alto e os fatores que predominaram, com quantas vezes cada um apareceu.</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="chrome" aria-hidden="true"><i></i><i></i><i></i></div>
+            <a href="../assets/img/agrorisk/mapeamento.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/img/agrorisk/mapeamento.webp" width="1600" height="900" alt="Mapa de riscos com rios, lagos e represas destacados em vermelho num raio de 25 km"></a>
+            <figcaption><strong>Mapa de riscos</strong>Rios, lagos e represas num raio de 25 km são descobertos automaticamente pelo OpenStreetMap, mas só viram alerta depois que o operador confirma.</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="chrome" aria-hidden="true"><i></i><i></i><i></i></div>
+            <a href="../assets/img/agrorisk/central-sompo.webp" target="_blank" rel="noopener"><img loading="lazy" src="../assets/img/agrorisk/central-sompo.webp" width="1600" height="900" alt="Central da Sompo com panorama da carteira rural, exposição segurada e prioridades por risco"></a>
+            <figcaption><strong>Central da seguradora</strong>Mostra carteira, exposição segurada e sinistros em triagem. O perfil do produtor não tem acesso a esta tela.</figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -176,6 +220,7 @@
               <li><strong>Silêncio inteligente:</strong> o alerta só é reenviado se a condição piorar ou persistir além do intervalo configurado.</li>
               <li><strong>Canais independentes:</strong> se um canal falha, o outro entrega, e nenhuma falha de entrega bloqueia a ingestão de telemetria.</li>
             </ul>
+            <img loading="lazy" src="../assets/img/agrorisk/painel-alertas.webp" width="352" height="426" alt="Painel de alertas com opções de ativar notificação no navegador e gerar link de vinculação do Telegram" style="max-width:240px;margin-top:12px;border-radius:12px;border:1px solid var(--border)">
           </article>
           <article class="card contrib">
             <p class="lines">~900 linhas · 15 arquivos</p>
@@ -224,7 +269,10 @@
           <li><strong>Teste o que pode falhar em silêncio.</strong> Criptografia, isolamento de carteira e regra de silêncio têm testes automatizados próprios.</li>
         </ul>
 
-        <h3 style="margin-top:40px">Equipe</h3>
+        <h3 style="margin-top:40px">Da Sprint 3 à Sprint 4</h3>
+        <p>Na Sprint 3, a equipe listou por escrito oito pendências do produto. A Sprint 4 fechou sete delas: login com dois perfis e recorte de dados no servidor, camada de IA ativa, score explicável no produto web, tela de frota, priorização visual e alerta no celular. As três últimas foram sugestões da própria Sompo, e o alerta saiu com dois canais em vez de um. A pendência restante, um buffer offline no ESP32, ficou no backlog com justificativa: o failover de Wi-Fi para USB já cobre esse cenário.</p>
+
+        <h3 style="margin-top:40px">Equipe sInApse</h3>
         <p>Arthur Lins Ocanha · Thainá Almeida Santos · Vitor Barbosa Vitorino · Silvio Dela Libera Neto</p>
 
         <div class="actions">
@@ -238,7 +286,7 @@
   <footer>
     <div class="container">
       <span>© 2026 Vitor Barbosa Vitorino</span>
-      <a href="https://github.com/Vitoriinoo" target="_blank" rel="noopener">github.com/Vitoriinoo</a>
+      <span><a href="https://www.linkedin.com/in/vitor-vitorino" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/Vitoriinoo" target="_blank" rel="noopener">GitHub</a></span>
     </div>
   </footer>
 </body>

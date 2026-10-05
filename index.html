@@ -8,6 +8,7 @@
   <meta property="og:title" content="Vitor Vitorino | IA e Dados">
   <meta property="og:description" content="Projetos de Machine Learning, IoT e IA aplicada. Destaque: AgroRisk, monitoramento de risco operacional para a Sompo Seguros.">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="https://vitoriinoo.github.io/assets/img/og-agrorisk.jpg">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%235fd38d'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='17' text-anchor='middle' fill='%2306130b'%3EVV%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,6 +36,7 @@
         <p class="lead">Sou estudante de Inteligência Artificial e trabalho com Machine Learning, IA generativa e LLMs. Gosto de projetos completos, que vão do sensor ao modelo e do modelo ao alerta no celular de quem precisa agir.</p>
         <div class="actions">
           <a class="btn primary" href="projetos/agrorisk.html">Ver projeto em destaque →</a>
+          <a class="btn" href="https://www.linkedin.com/in/vitor-vitorino" target="_blank" rel="noopener">LinkedIn</a>
           <a class="btn" href="https://github.com/Vitoriinoo" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
@@ -52,7 +54,7 @@
             <p class="muted">Uma plataforma IoT de ponta a ponta. Um ESP32 na máquina envia telemetria para a nuvem, um motor de risco gera um score explicável de 0 a 100, e o alerta chega ao operador, ao dono da fazenda e à seguradora.</p>
             <ul class="points">
               <li><strong>Hardware até o celular:</strong> ESP32 com 4 sensores, API serverless, PostgreSQL e alertas por Web Push e Telegram.</li>
-              <li><strong>IA com governança:</strong> detecção de anomalias por máquina e modelo de escalada de risco, ambos versionados e consultivos.</li>
+              <li><strong>IA com governança:</strong> detector de anomalias treinado com 9.050 leituras reais, versionado e consultivo.</li>
               <li><strong>Minha parte:</strong> sistema de alertas no celular e relatórios históricos por fazenda, região e período.</li>
             </ul>
             <ul class="tags">
@@ -65,21 +67,11 @@
             </div>
           </div>
 
-          <div class="risk-panel" aria-label="Exemplo ilustrativo de uma leitura de risco do AgroRisk">
-            <div style="display:flex;justify-content:space-between;align-items:flex-end">
-              <div>
-                <div class="muted">colheitadeira-01</div>
-                <div class="score">68<span style="font-size:1rem" class="muted">/100</span></div>
-              </div>
-              <span class="level">ALTO</span>
-            </div>
-            <div class="bar"><span style="width:68%"></span></div>
-            <div class="row"><span>Obstáculo crítico (≤ 30 cm)</span><span class="pts">+30</span></div>
-            <div class="row"><span>Inclinação crítica (≥ 15°)</span><span class="pts">+25</span></div>
-            <div class="row"><span>Zona perigosa próxima</span><span class="pts">+8</span></div>
-            <div class="row"><span>Umidade em atenção</span><span class="pts">+5</span></div>
-            <div class="row muted"><span>→ Alerta enviado ao operador</span><span>📱</span></div>
-          </div>
+          <figure class="shot">
+            <div class="chrome" aria-hidden="true"><i></i><i></i><i></i></div>
+            <a href="projetos/agrorisk.html"><img src="assets/img/agrorisk/analise.webp" width="1600" height="900" alt="Tela de análise explicável do AgroRisk: score 92 de 100, risco alto, com leitura para corretor, subscritor e analista de sinistros"></a>
+            <figcaption>Análise explicável: o mesmo score traduzido para corretor, subscritor e analista de sinistros.</figcaption>
+          </figure>
         </article>
 
         <div class="grid cols-2" style="margin-top:16px">
@@ -102,7 +94,7 @@
         <p class="eyebrow">Sobre</p>
         <h2>Da teoria ao produto funcionando</h2>
         <p>Estudo Inteligência Artificial na <strong>FIAP</strong>. Meu interesse está em levar modelos para fora do notebook: integrar com sensores, APIs e bancos de dados, e entregar o resultado de um jeito que uma pessoa consiga entender e usar.</p>
-        <p>No AgroRisk, trabalhei em equipe de quatro pessoas num desafio proposto pela <strong>Sompo Seguros</strong>. Fiquei responsável por entregar o alerta certo, na hora certa e pelo canal disponível, e por consolidar o histórico em relatórios que mostram onde o risco se concentra.</p>
+        <p>No AgroRisk, trabalhei com a equipe <strong>sInApse</strong> no Challenge proposto pela <strong>Sompo Seguros</strong>. Fiquei responsável por entregar o alerta certo, na hora certa e pelo canal disponível, e por consolidar o histórico em relatórios que mostram onde o risco se concentra.</p>
       </div>
     </section>
 
@@ -134,9 +126,10 @@
       <div class="container">
         <p class="eyebrow">Contato</p>
         <h2>Vamos conversar?</h2>
-        <p class="lead">Estou aberto a oportunidades e projetos em dados e IA. O jeito mais rápido de me encontrar é pelo GitHub.</p>
+        <p class="lead">Estou aberto a oportunidades e projetos em dados e IA. O jeito mais rápido de falar comigo é pelo LinkedIn.</p>
         <div class="actions">
-          <a class="btn primary" href="https://github.com/Vitoriinoo" target="_blank" rel="noopener">github.com/Vitoriinoo</a>
+          <a class="btn primary" href="https://www.linkedin.com/in/vitor-vitorino" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class="btn" href="https://github.com/Vitoriinoo" target="_blank" rel="noopener">GitHub ↗</a>
         </div>
       </div>
     </section>
@@ -145,7 +138,7 @@
   <footer>
     <div class="container">
       <span>© 2026 Vitor Barbosa Vitorino</span>
-      <span>Feito com HTML e CSS · hospedado no GitHub Pages</span>
+      <span><a href="https://www.linkedin.com/in/vitor-vitorino" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/Vitoriinoo" target="_blank" rel="noopener">GitHub</a></span>
     </div>
   </footer>
 </body>
