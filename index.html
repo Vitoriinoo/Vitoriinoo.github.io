@@ -21,7 +21,7 @@
       <a class="brand" href="#">vitor<span>.</span>vitorino</a>
       <ul>
         <li><a href="#habilidades">Habilidades</a></li>
-        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="projetos/">Projetos</a></li>
         <li class="hide-sm"><a href="#sobre">Sobre</a></li>
         <li><a href="#contato">Contato</a></li>
       </ul>
@@ -68,8 +68,8 @@
 
     <section id="projetos">
       <div class="container">
-        <p class="eyebrow">Projeto em destaque</p>
-        <h2>Projetos</h2>
+        <p class="eyebrow">Projetos</p>
+        <h2>Projeto em destaque</h2>
 
         <article class="card featured">
           <div>
@@ -98,24 +98,13 @@
           </figure>
         </article>
 
-        <div class="grid cols-3" style="margin-top:16px">
-          <article class="card">
-            <h3>Análise estatística do seguro rural</h3>
-            <p class="muted">Analisei em R 1.048.565 apólices do programa federal de seguro rural (2016 a 2024). A base é desbalanceada (18,2% com sinistro), a soja concentra frequência e severidade, e a média engana. Esses achados orientaram o score do AgroRisk.</p>
-            <ul class="tags"><li>R</li><li>data.table</li><li>ggplot2</li></ul>
-            <a href="projetos/agrorisk.html#dados" style="display:inline-block;margin-top:14px">Ver análise →</a>
-          </article>
-          <article class="card">
-            <h3>Pipeline de risco em Python</h3>
-            <p class="muted">Este é o MVP acadêmico do AgroRisk. Ele valida a telemetria, calcula o score com pandas, separa registros inconsistentes e gera relatórios em CSV, JSON e PNG, tudo coberto por testes automatizados.</p>
-            <ul class="tags"><li>Python</li><li>pandas</li><li>unittest</li></ul>
-          </article>
-          <article class="card">
-            <h3>Próximos projetos</h3>
-            <p class="muted">Outros estudos em Machine Learning, IA generativa e LLMs serão publicados aqui. Enquanto isso, eles estão no meu GitHub.</p>
-            <a href="https://github.com/Vitoriinoo?tab=repositories" target="_blank" rel="noopener">Ver repositórios ↗</a>
-          </article>
-        </div>
+        <a class="card all-projects" href="projetos/">
+          <span>
+            <strong>Ver todos os projetos</strong>
+            <span class="muted">A lista completa, com as tecnologias usadas em cada um e filtro por tecnologia.</span>
+          </span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
       </div>
     </section>
 
