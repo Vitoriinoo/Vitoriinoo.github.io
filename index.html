@@ -50,12 +50,12 @@
           <div class="card skill-card">
             <h3>IA e Dados</h3>
             <p>Modelagem, avaliação e explicabilidade de modelos.</p>
-            <ul class="tags"><li>Python</li><li>pandas</li><li>Machine Learning</li><li>Detecção de anomalias</li><li>IA generativa</li><li>LLMs</li></ul>
+            <ul class="tags"><li>Python</li><li>R</li><li>pandas</li><li>Estatística</li><li>Machine Learning</li><li>Detecção de anomalias</li><li>IA generativa</li><li>LLMs</li></ul>
           </div>
           <div class="card skill-card">
             <h3>Backend</h3>
-            <p>APIs, persistência e integrações de notificação.</p>
-            <ul class="tags"><li>Node.js</li><li>PostgreSQL</li><li>REST</li><li>Web Push</li><li>Telegram Bot API</li><li>Serverless</li></ul>
+            <p>APIs, modelagem de dados e integrações.</p>
+            <ul class="tags"><li>Node.js</li><li>SQL</li><li>PostgreSQL</li><li>Oracle</li><li>REST</li><li>Web Push</li><li>Telegram Bot API</li><li>Serverless</li></ul>
           </div>
           <div class="card skill-card">
             <h3>Web e ferramentas</h3>
@@ -79,7 +79,7 @@
             <ul class="points">
               <li><strong>IA com governança:</strong> o detector de anomalias foi treinado com 9.050 leituras reais e é versionado e consultivo. O modelo supervisionado fica bloqueado até existirem rótulos humanos verificados.</li>
               <li><strong>Score explicável:</strong> cada ponto do risco tem um fator declarado, traduzido para corretor, subscritor e analista de sinistros.</li>
-              <li><strong>Minha atuação:</strong> participei de toda a solução. Dois destaques são os alertas em tempo real por Web Push e Telegram, com criptografia implementada sobre <code>node:crypto</code>, e relatórios históricos por fazenda, região e período.</li>
+              <li><strong>Minha atuação:</strong> participei de toda a solução, com destaque para a análise estatística em R, a modelagem de dados, os alertas em tempo real e os relatórios históricos.</li>
             </ul>
             <ul class="tags">
               <li>Machine Learning</li><li>Detecção de anomalias</li><li>IA explicável</li><li>Python · pandas</li><li>Node.js</li><li>PostgreSQL</li>
@@ -98,7 +98,13 @@
           </figure>
         </article>
 
-        <div class="grid cols-2" style="margin-top:16px">
+        <div class="grid cols-3" style="margin-top:16px">
+          <article class="card">
+            <h3>Análise estatística do seguro rural</h3>
+            <p class="muted">Analisei em R 1.048.565 apólices do programa federal de seguro rural (2016 a 2024). A base é desbalanceada (18,2% com sinistro), a soja concentra frequência e severidade, e a média engana. Esses achados orientaram o score do AgroRisk.</p>
+            <ul class="tags"><li>R</li><li>data.table</li><li>ggplot2</li></ul>
+            <a href="projetos/agrorisk.html#dados" style="display:inline-block;margin-top:14px">Ver análise →</a>
+          </article>
           <article class="card">
             <h3>Pipeline de risco em Python</h3>
             <p class="muted">Este é o MVP acadêmico do AgroRisk. Ele valida a telemetria, calcula o score com pandas, separa registros inconsistentes e gera relatórios em CSV, JSON e PNG, tudo coberto por testes automatizados.</p>
@@ -118,7 +124,7 @@
         <p class="eyebrow">Sobre</p>
         <h2>Da teoria ao produto funcionando</h2>
         <p>Estudo Inteligência Artificial na <strong>FIAP</strong>. Meu interesse está em levar modelos para fora do notebook: integrar com APIs e bancos de dados, e entregar o resultado de um jeito que uma pessoa consiga entender e usar.</p>
-        <p>No AgroRisk, trabalhei com a equipe <strong>sInApse</strong> no Challenge proposto pela <strong>Sompo Seguros</strong>. Atuei em todas as frentes da solução, que foi construída em mais de um repositório: das regras de risco e da camada de IA ao backend, às telas, aos alertas e aos relatórios.</p>
+        <p>No AgroRisk, trabalhei com a equipe <strong>sInApse</strong> no Challenge proposto pela <strong>Sompo Seguros</strong>. Atuei em todas as frentes da solução, que foi construída em mais de um repositório: da análise estatística e da modelagem de dados às regras de risco, à camada de IA, ao backend, às telas, aos alertas e aos relatórios.</p>
       </div>
     </section>
 

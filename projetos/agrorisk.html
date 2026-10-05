@@ -20,6 +20,7 @@
       <a class="brand" href="../index.html">vitor<span>.</span>vitorino</a>
       <ul>
         <li><a href="#ia">IA</a></li>
+        <li class="hide-sm"><a href="#dados">Dados</a></li>
         <li class="hide-sm"><a href="#arquitetura">Arquitetura</a></li>
         <li class="hide-sm"><a href="#telas">Telas</a></li>
         <li><a href="#contribuicao">Minha atuação</a></li>
@@ -107,6 +108,37 @@
         <h2>Um número que se explica</h2>
         <p>Cada leitura soma pontos por fatores com limites claros: obstáculo próximo, inclinação crítica, temperatura ou umidade extremas, velocidade alta, saída da área autorizada e proximidade de rios ou barrancos. O total vai de 0 a 100 e é classificado como <strong>BAIXO</strong> (&lt; 30), <strong>MÉDIO</strong> (&lt; 60) ou <strong>ALTO</strong>.</p>
         <p>O score sempre vem acompanhado da lista de fatores que o compõem, com o peso de cada um. O operador vê <em>por que</em> está em risco e o analista da seguradora consegue auditar a conta ponto a ponto. A mesma regra roda no produto web (JavaScript) e no pipeline de análise em Python com pandas, com os mesmos limites de classificação.</p>
+      </div>
+    </section>
+
+    <section id="dados">
+      <div class="container">
+        <p class="eyebrow">Base estatística</p>
+        <h2>O que 1 milhão de apólices dizem sobre o risco</h2>
+        <p class="muted" style="max-width:720px">Antes de definir o score, analisei em R os dados abertos do Programa de Subvenção ao Prêmio do Seguro Rural (PSR), do Ministério da Agricultura: 1.048.565 apólices e 39 variáveis, das safras de 2016 a 2024. O objetivo era descobrir onde o risco se concentra, quanto custa e se a base serve para Machine Learning.</p>
+        <div class="stats" style="margin-top:28px">
+          <div class="stat"><b>1.048.565</b><span>apólices analisadas</span></div>
+          <div class="stat"><b>18,2%</b><span>das apólices com sinistro</span></div>
+          <div class="stat"><b>43,9%</b><span>da carteira concentrada em soja</span></div>
+          <div class="stat"><b>2,23×</b><span>média sobre a mediana das indenizações</span></div>
+        </div>
+        <div class="grid cols-3" style="margin-top:28px">
+          <div class="card">
+            <h3>Base desbalanceada</h3>
+            <p class="muted">Como só 18,2% das apólices têm sinistro, um modelo treinado na base bruta acertaria 81,8% prevendo sempre "sem sinistro" e não serviria para nada. Por isso, balancear as classes virou pré-requisito do score.</p>
+          </div>
+          <div class="card">
+            <h3>Dupla exposição da soja</h3>
+            <p class="muted">A cultura mais frequente da carteira também é a mais severa, com indenizações acima de R$ 6 milhões. Um evento climático regional atinge quase metade da carteira de uma vez: é risco sistêmico.</p>
+          </div>
+          <div class="card">
+            <h3>A média engana</h3>
+            <p class="muted">O desvio padrão supera a média (o coeficiente de variação chega a 172%). A mediana descreve o produtor típico; a média é puxada por perdas catastróficas raras. Precificar pela média distorce o risco.</p>
+          </div>
+        </div>
+        <div class="callout" style="margin-top:16px">
+          <strong>Impacto no projeto:</strong> <span class="muted">esses achados definiram duas regras técnicas: nenhum modelo supervisionado sem balanceamento de classes e transformação dos valores extremos, e relatórios baseados em mediana, quartis e dispersão, não só na média.</span>
+        </div>
       </div>
     </section>
 
@@ -213,9 +245,29 @@
       <div class="container">
         <p class="eyebrow">Minha atuação</p>
         <h2>Como eu contribuí</h2>
-        <p class="muted" style="max-width:720px">Participei de toda a solução, que foi construída em equipe e em mais de um repositório. Abaixo estão dois módulos que mostram bem o tipo de problema que resolvi:</p>
+        <p class="muted" style="max-width:720px">Participei de toda a solução, que foi construída em equipe e em mais de um repositório. Abaixo estão quatro frentes que mostram bem o tipo de problema que resolvi:</p>
 
         <div class="grid cols-2" style="margin-top:24px">
+          <article class="card contrib">
+            <p class="lines">R · 1.048.565 apólices</p>
+            <h3>Análise estatística do seguro rural</h3>
+            <ul class="muted" style="padding-left:18px">
+              <li><strong>Tratamento de base pública com inconsistências:</strong> a base registrava sinistro ausente com hífen e usava separador decimal brasileiro, o que transformava colunas financeiras inteiras em texto.</li>
+              <li><strong>Volume:</strong> processei a base integral com <code>dtplyr</code>, que executa o <code>dplyr</code> sobre o motor do <code>data.table</code>.</li>
+              <li>Amostra reprodutível, tabelas de frequência pela regra de Sturges, gráficos em <code>ggplot2</code> e medidas de tendência central, dispersão e separatrizes.</li>
+              <li><strong>Recomendações para o negócio:</strong> limites de exposição por cultura, precificação por mediana e quartis e dimensionamento de resseguro pela cauda da distribuição.</li>
+            </ul>
+          </article>
+          <article class="card contrib">
+            <p class="lines">Oracle · 12 tabelas</p>
+            <h3>Modelagem de dados</h3>
+            <ul class="muted" style="padding-left:18px">
+              <li><strong>Modelo entidade-relacionamento e modelo físico</strong> com região, operador, equipamento, apólice, operação, telemetria, avaliação de risco, fatores, alertas e incidentes.</li>
+              <li><strong>Integridade no banco:</strong> 16 chaves estrangeiras, 49 restrições CHECK, 9 restrições UNIQUE, 14 índices e 11 sequences.</li>
+              <li><strong>Auditoria no modelo:</strong> cada avaliação guarda a versão do modelo e se decompõe nos fatores que a geraram. Cada incidente registra se houve alerta antes, o que permite medir a eficácia da prevenção.</li>
+              <li>Script idempotente, com convenção de nomes e dicionário de dados.</li>
+            </ul>
+          </article>
           <article class="card contrib">
             <p class="lines">~1.700 linhas · 27 arquivos</p>
             <h3>Alertas no celular do operador</h3>
@@ -252,8 +304,9 @@
         <div class="card" style="overflow-x:auto">
           <table class="stack">
             <tr><th>IA e análise</th><td>Detecção de anomalias robusta (mediana/MAD), regressão logística, explicação por perfil de leitor, Python com pandas</td></tr>
+            <tr><th>Estatística</th><td>R com dplyr, dtplyr/data.table e ggplot2</td></tr>
             <tr><th>Backend</th><td>Node.js, 24 rotas serverless na Vercel</td></tr>
-            <tr><th>Dados</th><td>PostgreSQL (Neon) com 18 tabelas, clima da NASA POWER, zonas do OpenStreetMap</td></tr>
+            <tr><th>Dados</th><td>Modelagem relacional em Oracle, PostgreSQL (Neon) com 18 tabelas, clima da NASA POWER, zonas do OpenStreetMap</td></tr>
             <tr><th>Front-end</th><td>HTML, CSS e JavaScript puro, PWA com service worker</td></tr>
             <tr><th>Notificações</th><td>Web Push (VAPID + aes128gcm), Telegram Bot API</td></tr>
             <tr><th>Segurança</th><td>Senhas com hash scrypt, comparação em tempo constante, escopo de dados por perfil e cabeçalhos de segurança HTTP</td></tr>
